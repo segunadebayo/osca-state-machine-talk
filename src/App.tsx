@@ -1,45 +1,36 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { useMachine } from "@xstate/react";
+import * as stopwatch from "./stopwatch.machine";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [state, send] = useMachine(stopwatch.machine);
+  const api = stopwatch.connect(state, send);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
+    <div className="frame">
+      <div className="fixed">
+        <p className="display">{api.value}</p>
+        <div role="group" className="button-group">
+          <button className="button variant=gray" onClick={api.lap}>
+            Lap
           </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+          <button className="button variant=gray" onClick={api.reset}>
+            Reset
+          </button>
+          <button className="button variant=green" onClick={api.start}>
+            Start
+          </button>
+          <button className="button variant=red" onClick={api.pause}>
+            Pause
+          </button>
+        </div>
+      </div>
+      <ul className="laps">
+        {api.laps.map((lap, index) => (
+          <li key={index}>{lap}</li>
+        ))}
+      </ul>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
