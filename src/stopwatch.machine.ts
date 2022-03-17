@@ -50,31 +50,29 @@ const utils = {
  * -----------------------------------------------------------------------------*/
 
 export const machine = createMachine({
+  id: "stopwatch",
+
   context: {
     value: 0,
     valueAsString: "00:00:00",
     laps: [],
     formattedLaps: [],
   } as Context,
+
   initial: "idle",
+
   states: {
     idle: {
       on: {
         START: {
-          target: "pre:ticking",
-        },
-      },
-    },
-    "pre:ticking": {
-      after: {
-        100: {
           target: "ticking",
           actions: ["recordLap"],
         },
       },
     },
+
     ticking: {
-      invoke: { id: "ticking", src: "ticking" },
+      invoke: { src: "ticking" },
       on: {
         TICK: {
           actions: ["tick"],
@@ -87,6 +85,7 @@ export const machine = createMachine({
         },
       },
     },
+
     paused: {
       on: {
         RESET: {
@@ -99,13 +98,12 @@ export const machine = createMachine({
       },
     },
   },
-  id: "stopwatch",
 }).withConfig({
   services: {
     ticking: () => (send) => {
       const id = setInterval(() => {
         send("TICK");
-      }, 100);
+      }, 1_000 / 60);
       return () => {
         clearInterval(id);
       };
