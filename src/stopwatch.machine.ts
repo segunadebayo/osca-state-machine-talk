@@ -112,7 +112,7 @@ export const machine = createMachine({
     },
   },
   actions: {
-    clearLap: assign({ laps: [], formattedLaps: [] }),
+    clearLap: assign({ laps: [] as number[], formattedLaps: [] as string[] }),
     clearValue: assign({ value: 0, valueAsString: "00:00:00" }),
 
     recordLap: assign((context) => {
