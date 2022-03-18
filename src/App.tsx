@@ -2,9 +2,13 @@ import { useMachine } from "@xstate/react";
 import * as stopwatch from "./stopwatch.machine";
 
 function App() {
+  // consume the machine in react
   const [state, send] = useMachine(stopwatch.machine);
+
+  // create an api surface for the machine
   const api = stopwatch.connect(state, send);
 
+  // render your UI
   return (
     <div className="frame">
       <div className="fixed">
