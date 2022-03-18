@@ -1,4 +1,5 @@
 import { useMachine } from "@xstate/react";
+import { Log } from "./Log";
 import * as stopwatch from "./stopwatch.machine";
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           <li key={index}>{lap}</li>
         ))}
       </ul>
+      <Log state={state} />
     </div>
   );
 }

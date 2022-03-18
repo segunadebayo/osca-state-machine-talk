@@ -81,7 +81,6 @@ code {
   font-size: 80px;
   font-weight: 300;
   text-align: center;
-  padding: 14px 0;
   font-variant-numeric: tabular-nums;
 }
 
@@ -91,11 +90,17 @@ code {
 }
 
 pre {
+  position: fixed;
+  width: 370px;
+  bottom: 60px;
   margin-top: 20px;
   background-color: rgba(0, 89, 89, 0.344);
   padding: 1em;
-  border-radius: 20px;
-  font-family: "Menlo", Courier, monospace;
+  font-family: "SF Mono", Courier, monospace;
+  color: rgb(218, 215, 182);
+  font-size: 10px;
+  max-height: 200px;
+  overflow-y: auto;
 }
 
 .laps {
