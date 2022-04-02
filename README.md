@@ -13,6 +13,12 @@ Segun is the creator and maintainer of Chakra UI. He is passionate about buildin
 - [Twitter](https://twitter.com/oscafrica/status/1503653726053191682)
 - [Website](https://festival.oscafrica.org/#speakers)
 - [Instagram](https://www.instagram.com/p/CbHkalbOR9S/)
+- [Google Slides](https://docs.google.com/presentation/d/1myudfQI9iZF4kkfPH8WG7CK1rbQ6MpHu58oCK7ZC35Y/edit?usp=sharing)
+
+## Images
+
+- https://cln.sh/Em2RYw
+- https://cln.sh/BVg3xX
 
 ## Outline
 
